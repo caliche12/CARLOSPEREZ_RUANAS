@@ -1,332 +1,258 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi tienda</title>
-  <style>
-    <h1>🍽️ Ecommerce Comida Internacional - Harvey Sanabria</h1>
-
-    <p class="slogan">
-      Sabores del mundo a un clic de distancia 🌎
-    </p>
-
-    <div class="beneficios">
-      <span>🚚 Envíos en Bogotá</span>
-      <span>🔒 Compra segura</span>
-      <span>📦 Seguimiento de pedido</span>
-    </div>
-
-    <div id="productos"></div>
-
-    <div class="carrito">
-      <h2>🧾 Carrito de Compras</h2>
-
-      <ul id="lista-carrito"></ul>
-
-      <div class="resumen">
-        <p>
-          Envío: <strong>Gratis</strong>
-        </p>
-
-        <p class="total">
-          Total: $<span id="total">0</span>
-        </p>
-      </div>
-
-      <button class="vaciar" onclick="vaciarCarrito()">
-        🧼 Vaciar Carrito
-      </button>
-
-      <button class="finalizar" onclick="finalizarCompra()">
-        ✅ Finalizar Compra
-      </button>
-    </div>
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Handgewebte kolumbianische Ruanas aus Nobsa | Ruanas de Nobsa</title>
+<meta name="description" content="Handgewebte Ruanas aus Schurwolle von Webmeistern aus Nobsa, Kolumbien.">
+<meta property="og:type" content="website"><meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:title" content="Ruanas de Nobsa"><meta property="og:description" content="Handgewebte Ruanas aus Schurwolle von Webmeistern aus Nobsa, Kolumbien.">
+<link rel="canonical" href="https://www.example.com/">
+<link rel="alternate" hreflang="de" href="https://www.example.com/?lang=de">
+<link rel="alternate" hreflang="en" href="https://www.example.com/?lang=en">
+<link rel="alternate" hreflang="es" href="https://www.example.com/?lang=es">
+<link rel="alternate" hreflang="x-default" href="https://www.example.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Store","name":"Ruanas de Nobsa","description":"Handwoven Colombian ruanas from Nobsa","areaServed":"Europe","priceCurrency":"EUR"}</script>
+<style>
+:root{--w:#493329;--i:#FFF9EF;--g:#7D7C7A;--t:#C85A32;--t2:#A8461F;--v:#3E503C;--sf:'Cormorant Garamond',Georgia,serif;--ss:'Inter',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font:16px/1.65 var(--ss);color:var(--w);background:var(--i);-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}img{max-width:100%;display:block}a{color:inherit}
+h1,h2,h3{font-family:var(--sf);font-weight:600;line-height:1.1}
+:focus-visible{outline:3px solid var(--t);outline-offset:2px}
+.skip{position:absolute;left:-999px;background:var(--w);color:var(--i);padding:.6rem 1rem;z-index:99}.skip:focus{left:0}
+.wrap{max-width:1180px;margin:auto;padding:0 1.25rem}
+section{padding:4.5rem 0}
+.eye{color:var(--t2);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;font-weight:600}
+h2{font-size:clamp(2rem,4vw,3rem);margin:.4rem 0 1rem}
+.btn{display:inline-block;border:1.5px solid var(--t2);background:var(--t2);color:#fff;padding:.8rem 1.6rem;border-radius:2px;font:600 .9rem var(--ss);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:.25s}
+.btn:hover{background:var(--w);border-color:var(--w);transform:translateY(-1px)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:var(--i);color:var(--w);border-color:var(--i)}
+.btn.sm{padding:.55rem 1rem;font-size:.8rem}
+header{position:sticky;top:0;z-index:50;background:rgba(255,249,239,.94);backdrop-filter:blur(10px);border-bottom:1px solid #e8dfd0}
+.hb{display:flex;align-items:center;gap:.9rem;height:68px}
+.logo{display:flex;align-items:center;gap:.5rem;font:700 1.35rem var(--sf);text-decoration:none;margin-right:auto}
+.logo svg{width:28px;height:28px}
+nav{display:flex;gap:1.6rem;align-items:center}
+nav a:not(.btn){text-decoration:none;font-size:.9rem;position:relative;padding:.3rem 0}
+nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1.5px;background:var(--t);transition:.3s}
+nav a:not(.btn):hover::after{width:100%}
+select{font:inherit;font-size:.85rem;background:transparent;color:var(--w);border:1px solid var(--g);border-radius:2px;padding:.4rem .4rem}
+.ib{position:relative;background:none;border:0;cursor:pointer;color:var(--w);padding:.4rem}.ib svg{width:24px;height:24px;display:block}
+#cnt{position:absolute;top:-2px;right:-4px;background:var(--t2);color:#fff;border-radius:99px;font-size:.7rem;min-width:18px;height:18px;display:grid;place-items:center}
+#bg,.bm{display:none}
+@media(max-width:900px){#bg{display:block}.bm{display:inline-block}nav{display:none;position:absolute;top:68px;left:0;right:0;background:var(--i);flex-direction:column;align-items:flex-start;padding:1rem 1.25rem 1.5rem;border-bottom:1px solid #e8dfd0}nav.open{display:flex}}
+@media(max-width:640px){.bh{display:none}}
+.hero{position:relative;min-height:88vh;display:grid;align-items:end;color:var(--i);background:linear-gradient(135deg,var(--w),var(--v));overflow:hidden;padding:0}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(73,51,41,.9),rgba(73,51,41,.12) 75%);z-index:1}
+.hero .wrap{position:relative;z-index:2;padding-top:6rem;padding-bottom:4.5rem}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem);max-width:14ch;margin:.5rem 0 1rem}
+.sl{font:italic 500 clamp(1.3rem,2.5vw,1.8rem) var(--sf);max-width:34ch;margin-bottom:2rem}
+.hero .eye{color:#f1c9b6}.hero .btn+.btn{margin-left:.6rem}
+.grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-top:2.5rem}
+.card{background:#fff;border-radius:4px;overflow:hidden;box-shadow:0 1px 3px rgba(73,51,41,.1);transition:.35s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(73,51,41,.18)}
+.ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:repeating-linear-gradient(45deg,var(--c1) 0 12px,var(--c2) 12px 24px)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.card:hover .ph img{transform:scale(1.05)}
+.tag{position:absolute;top:.8rem;left:.8rem;z-index:1;background:var(--v);color:var(--i);font-size:.72rem;padding:.25rem .6rem;letter-spacing:.08em;text-transform:uppercase}
+.cb{padding:1.2rem;display:flex;flex-direction:column;gap:.4rem;flex:1}.cb h3{font-size:1.5rem}
+.sub{color:var(--v);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.cb p:not(.sub){font-size:.95rem}
+.row{margin-top:auto;display:flex;justify-content:space-between;align-items:center;padding-top:.8rem}.price{font:600 1.5rem var(--sf)}
+.split{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:800px){.split{grid-template-columns:1fr 1fr}.rev .ph{order:2}}
+.split .ph{border-radius:4px;aspect-ratio:4/5}
+.band{background:var(--v);color:var(--i)}.band .eye{color:#f1c9b6}
+.three{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:2rem}
+.three h3{font-size:1.6rem;margin-bottom:.4rem}
+.steps{list-style:none;counter-reset:s;margin-top:1.2rem}
+.steps li{counter-increment:s;padding:.8rem 0 .8rem 3rem;position:relative;border-bottom:1px solid #e3d8c6}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.6rem;width:2rem;height:2rem;border-radius:50%;background:var(--t2);color:#fff;display:grid;place-items:center;font:600 1rem var(--sf)}
+.alt{background:#f4ead9}
+blockquote{background:var(--i);padding:1.6rem;border-left:3px solid var(--t);border-radius:2px;font:italic 500 1.25rem/1.4 var(--sf)}
+blockquote cite{display:block;margin-top:1rem;font:600 .85rem var(--ss);color:var(--v);font-style:normal}
+.promo{background:var(--t2);color:var(--i);text-align:center}.promo h2{margin-top:0}.promo p{max-width:50ch;margin:0 auto 1.6rem;font-size:1.1rem}
+details{border-bottom:1px solid #e3d8c6;padding:1rem 0}
+summary{cursor:pointer;font:600 1.35rem var(--sf);list-style:none;display:flex;justify-content:space-between}
+summary::after{content:"+";color:var(--t2);transition:.3s}details[open] summary::after{transform:rotate(45deg)}
+details p{margin-top:.6rem;max-width:70ch}
+footer{background:var(--w);color:var(--i);padding:4rem 0 2rem}
+.fg{display:grid;gap:2rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+footer h3{font-size:1.2rem;margin-bottom:.6rem}footer ul{list-style:none;display:grid;gap:.4rem}
+footer a{text-decoration:none;opacity:.88}footer a:hover{opacity:1;text-decoration:underline}
+.cr{margin-top:2.5rem;padding-top:1.2rem;border-top:1px solid rgba(255,249,239,.2);font-size:.85rem;opacity:.8}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.3s;z-index:60}
+#cart{position:fixed;top:0;right:0;bottom:0;width:min(100%,400px);background:var(--i);z-index:70;transform:translateX(100%);visibility:hidden;transition:transform .35s,visibility .35s;display:flex;flex-direction:column;padding:1.25rem}
+body.co #ov{opacity:1;pointer-events:auto}body.co #cart{transform:none;visibility:visible}
+.ch{display:flex;justify-content:space-between;align-items:center}.ch h2{margin:0;font-size:1.8rem}
+#items{list-style:none;flex:1;overflow:auto;margin:1rem 0}
+#items li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid #e3d8c6}
+.qty{display:flex;align-items:center;gap:.5rem}.qty button{width:28px;height:28px;border:1px solid var(--g);background:none;border-radius:50%;cursor:pointer;color:var(--w)}
+.tot{display:flex;justify-content:space-between;font:600 1.4rem var(--sf);margin-bottom:1rem}
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <h1>🍽️ Ecommerce Comida Internacional - Harvey Sanabria</h1>
-
-  <p class="slogan">
-    Sabores del mundo a un clic de distancia 🌎
-  </p>
-
-  <div class="beneficios">
-    <span>🚚 Envíos en Bogotá</span>
-    <span>🔒 Compra segura</span>
-    <span>📦 Seguimiento de pedido</span>
-  </div>
-
-  <div id="productos"></div>
-
-  <div class="carrito">
-    <h2>🧾 Carrito de Compras</h2>
-
-    <ul id="lista-carrito"></ul>
-
-    <div class="resumen">
-      <p>
-        Envío: <strong>Gratis</strong>
-      </p>
-
-      <p class="total">
-        Total: $<span id="total">0</span>
-      </p>
-    </div>
-
-    <button class="vaciar" onclick="vaciarCarrito()">
-      🧼 Vaciar Carrito
-    </button>
-
-    <button class="finalizar" onclick="finalizarCompra()">
-      ✅ Finalizar Compra
-    </button>
-  </div>
-
-  <script>
-    const productos = [
-      {
-        id: 1,
-        nombre: "Ruana Rústica",
-        descripcion: "Prenda tradicional de Nobsa elaborada en 100% lana virgen de oveja sin cardar.",
-        precio: 180000,
-        imagen: "https://www.madeinnobsa.com/wp-content/uploads/2022/08/RuanaRusticaLineaColombia-1.webp"
-      },
-      {
-        id: 2,
-        nombre: "Ruana Doble Faz",
-        descripcion: "Tejido artesanal reversible de doble cara con tonalidades neutras combinables.",
-        precio: 240000,
-        imagen: "https://artesytelares.com/wp-content/uploads/2019/10/ruana-hombre-doble-faz-2.webp"
-      },
-      {
-        id: 3,
-        nombre: "Ruana Cuatro Puntas",
-        descripcion: "Silueta icónica de corte cerrado y caída clásica en puntas en los costados.",
-        precio: 150000,
-        imagen: "https://http2.mlstatic.com/D_NQ_NP_926155-MCO88891174847_072025-O.webp"
-      },
-      {
-        id: 4,
-        nombre: "Ruana con Capota",
-        descripcion: "Modelo funcional que incorpora capucha integrada para máxima protección contra el frío.",
-        precio: 165000,
-        imagen: "https://i.pinimg.com/736x/19/13/ed/1913ed884c837639bb657ca86b7f5d98.jpg"
-      },
-      {
-        id: 5,
-        nombre: "Ruana de Diseño Contemporáneo",
-        descripcion: "Prenda de corte moderno tipo capa con un llamativo patrón de franjas multicolor.",
-        precio: 195000,
-        imagen: "https://www.madeinnobsa.com/wp-content/uploads/2025/11/RuanaPonchoColorines1.webp"
-      }
-    ];
-
-
-    /* ==============================
-       CARRITO
-    ================================ */
-
-    const carrito = [];
-
-    const contenedorProductos = document.getElementById("productos");
-    const listaCarrito = document.getElementById("lista-carrito");
-    const totalCarrito = document.getElementById("total");
-
-
-    /* ==============================
-       MOSTRAR PRODUCTOS
-    ================================ */
-
-    function mostrarProductos() {
-
-      contenedorProductos.innerHTML = "";
-
-      productos.forEach(prod => {
-
-        const div = document.createElement("div");
-
-        div.className = "producto";
-
-        div.innerHTML = `
-          <img src="${prod.imagen}" alt="${prod.nombre}">
-
-          <h3>${prod.nombre}</h3>
-
-          <p class="descripcion">
-            ${prod.descripcion}
-          </p>
-
-          <p class="precio">
-            ${prod.precio.toLocaleString("es-CO", {
-              style: "currency",
-              currency: "COP",
-              minimumFractionDigits: 0
-            })}
-          </p>
-
-          <button onclick="agregarAlCarrito(${prod.id})">
-            Agregar al carrito
-          </button>
-        `;
-
-        contenedorProductos.appendChild(div);
-
-      });
-
-    }
-
-
-    /* ==============================
-       AGREGAR AL CARRITO
-    ================================ */
-
-    function agregarAlCarrito(id) {
-
-      const productoExistente =
-        carrito.find(p => p.id === id);
-
-      if (productoExistente) {
-
-        productoExistente.cantidad++;
-
-      } else {
-
-        const producto =
-          productos.find(p => p.id === id);
-
-        carrito.push({
-          ...producto,
-          cantidad: 1
-        });
-
-      }
-
-      actualizarCarrito();
-
-    }
-
-
-    /* ==============================
-       ACTUALIZAR CARRITO
-    ================================ */
-
-    function actualizarCarrito() {
-
-      listaCarrito.innerHTML = "";
-
-      let total = 0;
-      let totalItems = 0;
-
-      carrito.forEach(item => {
-
-        const li =
-          document.createElement("li");
-
-        const subtotal =
-          item.precio * item.cantidad;
-
-        li.textContent =
-          `${item.nombre} x${item.cantidad} — ` +
-          subtotal.toLocaleString("es-CO", {
-            style: "currency",
-            currency: "COP",
-            minimumFractionDigits: 0
-          });
-
-        listaCarrito.appendChild(li);
-
-        total += subtotal;
-        totalItems += item.cantidad;
-
-      });
-
-      totalCarrito.textContent =
-        total.toLocaleString("es-CO");
-
-      actualizarTituloCarrito(totalItems);
-
-    }
-
-
-    /* ==============================
-       CONTADOR DEL CARRITO
-    ================================ */
-
-    function actualizarTituloCarrito(cantidad) {
-
-      const titulo =
-        document.querySelector(".carrito h2");
-
-      titulo.textContent =
-        `🧾 Carrito de Compras (${cantidad})`;
-
-    }
-
-
-    /* ==============================
-       VACIAR CARRITO
-    ================================ */
-
-    function vaciarCarrito() {
-
-      if (carrito.length === 0) {
-
-        alert("🛒 El carrito ya está vacío.");
-
-        return;
-
-      }
-
-      if (
-        confirm(
-          "¿Estás seguro de que quieres vaciar el carrito?"
-        )
-      ) {
-
-        carrito.length = 0;
-
-        actualizarCarrito();
-
-      }
-
-    }
-
-
-    /* ==============================
-       FINALIZAR COMPRA
-    ================================ */
-
-    function finalizarCompra() {
-
-      if (carrito.length === 0) {
-
-        alert(
-          "🛒 Tu carrito está vacío. Agrega productos antes de finalizar la compra."
-        );
-
-        return;
-
-      }
-
-      alert(
-        "🎉 ¡Pedido simulado confirmado!\n\n" +
-        "En un eCommerce real, ahora entrarían en acción " +
-        "el backend, la pasarela de pago y la logística."
-      );
-
-      carrito.length = 0;
-
-      actualizarCarrito();
-
-    }
-
-
-    /* ==============================
-       INICIAR TIENDA
-    ================================ */
-
-    mostrarProductos();
-  </script>
+<a class="skip" href="#productos" data-i18n="skip"></a>
+<header><div class="wrap hb">
+<a class="logo" href="#inicio" aria-label="Ruanas de Nobsa"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3 29 27H3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M16 3v24M9 15h14" stroke="#C85A32" stroke-width="2"/></svg>Ruanas de Nobsa</a>
+<nav id="nav" aria-label="Main">
+<a href="#inicio" data-i18n="nav.home"></a><a href="#productos" data-i18n="nav.prod"></a><a href="#historia" data-i18n="nav.story"></a><a href="#contacto" data-i18n="nav.contact"></a>
+<a class="btn sm bm" href="#productos" data-i18n="nav.buy"></a>
+</nav>
+<select id="lang" aria-label="Language / Sprache / Idioma"><option value="de">Deutsch</option><option value="en">English</option><option value="es">Español</option></select>
+<button class="ib" id="cb" data-i18n-aria="cart.open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg><span id="cnt" hidden>0</span></button>
+<a class="btn sm bh" href="#productos" data-i18n="nav.buy"></a>
+<button class="ib" id="bg" aria-expanded="false" aria-controls="nav" data-i18n-aria="menu"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+</div></header>
+<main>
+<section class="hero" id="inicio">
+<img src="assets/img/hero.jpg" alt="" fetchpriority="high" onerror="this.remove()">
+<div class="wrap"><p class="eye" data-i18n="hero.badge"></p><h1 data-i18n="hero.title"></h1><p class="sl" data-i18n="hero.slogan"></p>
+<a class="btn" href="#productos" data-i18n="hero.cta1"></a><a class="btn ghost" href="#historia" data-i18n="hero.cta2"></a></div>
+</section>
+<section id="productos"><div class="wrap"><p class="eye" data-i18n="prod.eye"></p><h2 data-i18n="prod.h"></h2><p data-i18n="prod.sub"></p><div class="grid" id="grid"></div></div></section>
+<section class="alt" id="historia"><div class="wrap split">
+<figure class="ph rv" style="--c1:#d9c9b0;--c2:#cfbd9f"><img src="assets/img/nobsa.jpg" loading="lazy" width="800" height="1000" alt="" onerror="this.remove()"></figure>
+<div class="rv"><p class="eye" data-i18n="story.eye"></p><h2 data-i18n="story.h"></h2><p data-i18n="story.p1"></p><br><p data-i18n="story.p2"></p></div></div></section>
+<section class="band"><div class="wrap"><p class="eye" data-i18n="ben.eye"></p><h2 data-i18n="ben.h"></h2>
+<div class="three"><div class="rv"><h3 data-i18n="ben1.t"></h3><p data-i18n="ben1.d"></p></div><div class="rv"><h3 data-i18n="ben2.t"></h3><p data-i18n="ben2.d"></p></div><div class="rv"><h3 data-i18n="ben3.t"></h3><p data-i18n="ben3.d"></p></div></div></div></section>
+<section><div class="wrap split rev">
+<figure class="ph rv" style="--c1:#3e503c;--c2:#344532"><img src="assets/img/telar.jpg" loading="lazy" width="800" height="1000" alt="" data-alt="craft.h" onerror="this.remove()"></figure>
+<div class="rv"><p class="eye" data-i18n="craft.eye"></p><h2 data-i18n="craft.h"></h2><p data-i18n="craft.p"></p>
+<ol class="steps"><li data-i18n="craft.s1"></li><li data-i18n="craft.s2"></li><li data-i18n="craft.s3"></li></ol></div></div></section>
+<!-- Sample testimonials: replace with real customer reviews before launch -->
+<section class="alt"><div class="wrap"><h2 data-i18n="test.h"></h2>
+<div class="three"><blockquote class="rv"><span data-i18n="test.t1"></span><cite>Anna K., Hamburg</cite></blockquote><blockquote class="rv"><span data-i18n="test.t2"></span><cite>Lukas M., Zürich</cite></blockquote><blockquote class="rv"><span data-i18n="test.t3"></span><cite>Claire D., Lyon</cite></blockquote></div></div></section>
+<section class="promo"><div class="wrap rv"><h2 data-i18n="promo.h"></h2><p data-i18n="promo.p"></p><a class="btn ghost" href="#productos" data-i18n="promo.cta"></a></div></section>
+<section id="faq"><div class="wrap" style="max-width:820px"><h2 data-i18n="faq.h"></h2>
+<details><summary data-i18n="faq.q1"></summary><p data-i18n="faq.a1"></p></details><details><summary data-i18n="faq.q2"></summary><p data-i18n="faq.a2"></p></details>
+<details><summary data-i18n="faq.q3"></summary><p data-i18n="faq.a3"></p></details><details><summary data-i18n="faq.q4"></summary><p data-i18n="faq.a4"></p></details></div></section>
+</main>
+<footer id="contacto"><div class="wrap"><div class="fg">
+<div><a class="logo" href="#inicio" style="color:var(--i)">Ruanas de Nobsa</a><p data-i18n="ft.tag" style="margin-top:.6rem"></p></div>
+<div><h3 data-i18n="ft.contact"></h3><ul><li><a id="mail" href="#"></a></li></ul></div>
+<div><h3 data-i18n="ft.help"></h3><ul><li><a href="#faq" data-i18n="ft.ship"></a></li><li><a href="#faq" data-i18n="ft.ret"></a></li></ul></div>
+<div><h3 data-i18n="ft.follow"></h3><ul id="soc"></ul></div></div>
+<p class="cr">© 2026 Ruanas de Nobsa · <span data-i18n="ft.rights"></span> · Hecho a mano en Colombia</p></div></footer>
+<div id="ov"></div>
+<aside id="cart" aria-labelledby="chd"><div class="ch"><h2 id="chd" data-i18n="cart.h"></h2><button class="ib" id="cx" data-i18n-aria="cart.close"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+<ul id="items"></ul><div class="tot"><span data-i18n="cart.total"></span><span id="total"></span></div><button class="btn" id="go" data-i18n="cart.go"></button></aside>
+<script>
+document.documentElement.classList.add('js');
+/* ===== Configuración editable / Editable config ===== */
+const CONFIG={defaultLang:'de',currency:'EUR',email:'hola@ruanasdenobsa.com',
+ prices:{1:189,2:229,3:199,4:219,5:249},
+ social:{Instagram:'https://www.instagram.com/',Facebook:'https://www.facebook.com/',Pinterest:'https://www.pinterest.com/'}};
+const P=[{id:1,a:'#d9c9b0',b:'#cfbd9f'},{id:2,a:'#c85a32',b:'#b9512c'},{id:3,a:'#7d7c7a',b:'#71706e',fav:1},{id:4,a:'#3e503c',b:'#344532'},{id:5,a:'#493329',b:'#3d2a21'}];
+/* ===== Traducciones / Translations ===== */
+const T={
+de:{skip:'Zum Inhalt springen','nav.home':'Startseite','nav.prod':'Produkte','nav.story':'Unsere Geschichte','nav.contact':'Kontakt','nav.buy':'Jetzt kaufen',menu:'Menü',
+'meta.title':'Handgewebte kolumbianische Ruanas aus Nobsa | Ruanas de Nobsa','meta.desc':'Handgewebte Ruanas aus Schurwolle von Webmeistern aus Nobsa, Kolumbien. Nachhaltig, fair gehandelt, Versand nach ganz Europa.',
+'hero.badge':'Handgewebt in Nobsa, Kolumbien','hero.title':'Die authentische Wärme der Anden','hero.slogan':'Handwerkliche Eleganz, die Ihre Seele umhüllt','hero.cta1':'Kollektion entdecken','hero.cta2':'Unsere Geschichte',
+'prod.eye':'Handgemacht in Kolumbien','prod.h':'Die Kollektion','prod.sub':'Fünf Klassiker, jeder einzelne am Webstuhl von Hand gefertigt.',add:'In den Warenkorb',fav:'Unser Favorit',
+'p1.n':'Rustikale Ruana „Colombiana“','p1.s':'Traditionell aus Schurwolle','p1.d':'Naturbelassene, kräftige Schurwolle im ursprünglichen Stil der Anden – robust, wärmend, unverwechselbar.',
+'p2.n':'Doppelseitige Ruana','p2.s':'Premium Wende-Ruana','p2.d':'Zwei Farbwelten in einem Stück: Wenden Sie sie ganz nach Stimmung und Anlass.',
+'p3.n':'Vier-Zipfel-Ruana','p3.s':'Ikonische Anden-Silhouette','p3.d':'Die klassische Form mit vier Spitzen – fließend im Fall, großzügig im Schnitt.',
+'p4.n':'Ruana mit Kapuze','p4.s':'Funktionelles Modell mit Kapuze','p4.d':'Zusätzlicher Schutz bei Wind und Kälte, ohne auf Eleganz zu verzichten.',
+'p5.n':'Zeitgenössische Design-Ruana','p5.s':'Moderner urbaner Cape-Style','p5.d':'Die Ruana neu gedacht: klare Linien und ein urbaner Cape-Look für den Alltag in der Stadt.',
+'story.eye':'Unsere Geschichte','story.h':'Die Webmeister von Nobsa','story.p1':'In Nobsa, im kolumbianischen Boyacá, wird die Ruana seit Generationen gewebt. Unsere Webmeisterinnen und Webmeister geben ein Handwerk weiter, das Wissen, Geduld und Respekt vor der Wolle verlangt.','story.p2':'Mit jedem Kauf unterstützen Sie diese Familien und halten eine lebendige Tradition am Leben – direkt von den Anden zu Ihnen.',
+'ben.eye':'Warum Wolle','ben.h':'Natürliche Schafwolle – gut für Sie und den Planeten','ben1.t':'Nachhaltig','ben1.d':'Nachwachsend, biologisch abbaubar und langlebig – eine Ruana begleitet Sie über Jahre.','ben2.t':'Fairer Handel','ben2.d':'Faire Bezahlung und direkte Zusammenarbeit mit den Handwerkerfamilien.','ben3.t':'Thermoregulierend','ben3.d':'Wolle wärmt bei Kälte und nimmt Feuchtigkeit auf – für ein angenehmes Körperklima.',
+'craft.eye':'Qualität','craft.h':'Handwerk am Webstuhl','craft.p':'Jede Ruana entsteht in mehreren Schritten – ohne Eile, mit geübter Hand.','craft.s1':'Wolle auswählen und vorbereiten','craft.s2':'Am Webstuhl weben','craft.s3':'Von Hand veredeln und prüfen',
+'test.h':'Stimmen aus Europa','test.t1':'„Die Verarbeitung ist außergewöhnlich – warm und gehaltvoll, trotzdem mühelos zu tragen.“','test.t2':'„Meine Ruana ist mein Lieblingsstück im Herbst. Man spürt, dass sie von Hand gemacht ist.“','test.t3':'„Zeitlos und elegant. Ich werde ständig darauf angesprochen.“',
+'promo.h':'Willkommensangebot','promo.p':'10 % Rabatt auf Ihre erste Bestellung mit dem Code BIENVENIDA.','promo.cta':'Jetzt entdecken',
+'faq.h':'Häufige Fragen','faq.q1':'Wie pflege ich meine Wollruana?','faq.a1':'Am besten von Hand in kaltem Wasser mit mildem Wollwaschmittel waschen, nicht auswringen und liegend trocknen. Nicht in den Trockner.','faq.q2':'Wie lagere ich sie richtig?','faq.a2':'Gefaltet, trocken und gut belüftet – Zedernholz oder Lavendel schützen auf natürliche Weise vor Motten.','faq.q3':'Liefern Sie international?','faq.a3':'Ja, wir versenden aus Kolumbien nach ganz Europa. Über Versandkosten, Lieferzeit, Zoll und Einfuhrumsatzsteuer informieren wir Sie transparent vor dem Kauf.','faq.q4':'Kann ich einen Artikel zurücksenden?','faq.a4':'Schreiben Sie uns innerhalb der gesetzlichen Widerrufsfrist – wir helfen Ihnen bei der Rücksendung.',
+'cart.h':'Warenkorb','cart.open':'Warenkorb öffnen','cart.close':'Schließen','cart.empty':'Ihr Warenkorb ist leer.','cart.total':'Gesamt','cart.go':'Bestellung anfragen','mail.s':'Bestellung','mail.h':'Guten Tag, ich möchte gern bestellen:',
+'ft.tag':'Handgewebte Ruanas aus Nobsa, Kolumbien – für Europa.','ft.contact':'Kontakt','ft.help':'Service','ft.ship':'Versand','ft.ret':'Rückgabe','ft.follow':'Folgen Sie uns','ft.rights':'Alle Rechte vorbehalten.'},
+en:{skip:'Skip to content','nav.home':'Home','nav.prod':'Products','nav.story':'Our Story','nav.contact':'Contact','nav.buy':'Shop now',menu:'Menu',
+'meta.title':'Handwoven Colombian Ruanas from Nobsa | Ruanas de Nobsa','meta.desc':'Handwoven ruanas in natural sheep wool by master weavers from Nobsa, Colombia. Sustainable, fairly traded, shipped across Europe.',
+'hero.badge':'Handwoven in Nobsa, Colombia','hero.title':'The Authentic Warmth of the Andes','hero.slogan':'Artisanal elegance that envelops your soul','hero.cta1':'Discover the collection','hero.cta2':'Our story',
+'prod.eye':'Handmade in Colombia','prod.h':'The Collection','prod.sub':'Five classics, each one woven by hand on the loom.',add:'Add to cart',fav:'Our favourite',
+'p1.n':'Rustic “Colombiana” Ruana','p1.s':'Traditional raw virgin wool','p1.d':'Natural, hard-wearing virgin wool in the original Andean style – sturdy, warm and unmistakable.',
+'p2.n':'Double-Face Ruana','p2.s':'Premium reversible double-face','p2.d':'Two colour stories in one piece: flip it to suit your mood and the occasion.',
+'p3.n':'Four-Point Ruana','p3.s':'Iconic Andean four-point silhouette','p3.d':'The classic four-point shape – a fluid drape and a generous cut.',
+'p4.n':'Hooded Ruana','p4.s':'Functional hooded model','p4.d':'Extra protection against wind and cold, without giving up elegance.',
+'p5.n':'Contemporary Design Ruana','p5.s':'Modern urban cape design','p5.d':'The ruana reimagined: clean lines and an urban cape look for city life.',
+'story.eye':'Our story','story.h':'The master weavers of Nobsa','story.p1':'In Nobsa, in Colombia’s Boyacá region, the ruana has been woven for generations. Our master weavers pass on a craft that demands knowledge, patience and deep respect for the wool.','story.p2':'Every purchase supports these families and keeps a living tradition alive – from the Andes straight to you.',
+'ben.eye':'Why wool','ben.h':'Natural sheep wool – good for you and the planet','ben1.t':'Sustainable','ben1.d':'Renewable, biodegradable and long-lasting – a ruana stays with you for years.','ben2.t':'Fair trade','ben2.d':'Fair pay and direct collaboration with artisan families.','ben3.t':'Thermoregulating','ben3.d':'Wool keeps you warm in the cold and wicks away moisture for a comfortable body climate.',
+'craft.eye':'Quality','craft.h':'Craftsmanship on the loom','craft.p':'Every ruana is made in several steps – unhurried, by experienced hands.','craft.s1':'Selecting and preparing the wool','craft.s2':'Weaving on the loom','craft.s3':'Hand finishing and inspection',
+'test.h':'Voices from Europe','test.t1':'“The quality is exceptional – warm and substantial, yet effortless to wear.”','test.t2':'“My ruana is my favourite autumn piece. You can feel it’s made by hand.”','test.t3':'“Timeless and elegant. I get asked about it constantly.”',
+'promo.h':'Welcome offer','promo.p':'10% off your first order with code BIENVENIDA.','promo.cta':'Shop now',
+'faq.h':'Frequently asked questions','faq.q1':'How do I care for my wool ruana?','faq.a1':'Hand-wash in cold water with a mild wool detergent, don’t wring, and dry flat. Never tumble-dry.','faq.q2':'How should I store it?','faq.a2':'Folded, dry and well ventilated – cedar or lavender is a natural moth deterrent.','faq.q3':'Do you ship internationally?','faq.a3':'Yes, we ship from Colombia across Europe. We tell you about shipping costs, delivery time, customs and import VAT transparently before you buy.','faq.q4':'Can I return an item?','faq.a4':'Write to us within the statutory withdrawal period and we’ll help you with the return.',
+'cart.h':'Cart','cart.open':'Open cart','cart.close':'Close','cart.empty':'Your cart is empty.','cart.total':'Total','cart.go':'Request order','mail.s':'Order','mail.h':'Hello, I would like to order:',
+'ft.tag':'Handwoven ruanas from Nobsa, Colombia – for Europe.','ft.contact':'Contact','ft.help':'Service','ft.ship':'Shipping','ft.ret':'Returns','ft.follow':'Follow us','ft.rights':'All rights reserved.'},
+es:{skip:'Saltar al contenido','nav.home':'Inicio','nav.prod':'Productos','nav.story':'Nuestra historia','nav.contact':'Contacto','nav.buy':'Comprar',menu:'Menú',
+'meta.title':'Ruanas colombianas tejidas a mano en Nobsa | Ruanas de Nobsa','meta.desc':'Ruanas de lana de oveja natural tejidas por maestros artesanos de Nobsa, Colombia. Sostenibles, de comercio justo y con envíos a toda Europa.',
+'hero.badge':'Tejido a mano en Nobsa, Colombia','hero.title':'La calidez auténtica de los Andes','hero.slogan':'Elegancia artesanal que envuelve tu alma','hero.cta1':'Descubrir la colección','hero.cta2':'Nuestra historia',
+'prod.eye':'Hecho a mano en Colombia','prod.h':'La colección','prod.sub':'Cinco clásicos, cada uno tejido a mano en el telar.',add:'Agregar al carrito',fav:'Nuestra favorita',
+'p1.n':'Ruana Rústica «Colombiana»','p1.s':'Tradicional en lana virgen cruda','p1.d':'Lana virgen natural y resistente al más puro estilo andino: firme, cálida e inconfundible.',
+'p2.n':'Ruana Doble Faz','p2.s':'Reversible premium de doble faz','p2.d':'Dos paletas de color en una sola prenda: dale la vuelta según tu ánimo y la ocasión.',
+'p3.n':'Ruana Cuatro Puntas','p3.s':'La icónica silueta andina','p3.d':'La forma clásica de cuatro puntas: caída fluida y corte generoso.',
+'p4.n':'Ruana con Capota','p4.s':'Modelo funcional con capota','p4.d':'Protección extra contra el viento y el frío, sin renunciar a la elegancia.',
+'p5.n':'Ruana de Diseño Contemporáneo','p5.s':'Cape urbano moderno','p5.d':'La ruana reinventada: líneas limpias y un aire de capa urbana para la vida en la ciudad.',
+'story.eye':'Nuestra historia','story.h':'Los maestros tejedores de Nobsa','story.p1':'En Nobsa, Boyacá, la ruana se teje desde hace generaciones. Nuestros maestros y maestras tejedoras transmiten un oficio que exige conocimiento, paciencia y respeto por la lana.','story.p2':'Cada compra apoya a estas familias y mantiene viva una tradición: de los Andes directamente a ti.',
+'ben.eye':'Por qué lana','ben.h':'Lana de oveja natural: buena para ti y para el planeta','ben1.t':'Sostenible','ben1.d':'Renovable, biodegradable y duradera: una ruana te acompaña por años.','ben2.t':'Comercio justo','ben2.d':'Pago justo y trabajo directo con las familias artesanas.','ben3.t':'Termorreguladora','ben3.d':'La lana abriga en el frío y absorbe la humedad para un clima corporal agradable.',
+'craft.eye':'Calidad','craft.h':'Calidad artesanal en telar','craft.p':'Cada ruana se hace en varias etapas: sin prisa y con manos expertas.','craft.s1':'Selección y preparación de la lana','craft.s2':'Tejido en el telar','craft.s3':'Acabado a mano y revisión',
+'test.h':'Voces de Europa','test.t1':'«La calidad es excepcional: cálida y con cuerpo, pero fácil de llevar.»','test.t2':'«Mi ruana es mi prenda favorita del otoño. Se nota que está hecha a mano.»','test.t3':'«Atemporal y elegante. Me preguntan por ella constantemente.»',
+'promo.h':'Oferta de bienvenida','promo.p':'10 % de descuento en tu primer pedido con el código BIENVENIDA.','promo.cta':'Comprar ahora',
+'faq.h':'Preguntas frecuentes','faq.q1':'¿Cómo cuido mi ruana de lana?','faq.a1':'Lávala a mano con agua fría y detergente suave para lana, no la tuerzas y sécala en plano. Nunca en secadora.','faq.q2':'¿Cómo la guardo?','faq.a2':'Doblada, en un lugar seco y ventilado; el cedro o la lavanda protegen de forma natural contra las polillas.','faq.q3':'¿Hacen envíos internacionales?','faq.a3':'Sí, enviamos desde Colombia a toda Europa. Te informamos con transparencia sobre costos de envío, plazos, aduana e IVA de importación antes de comprar.','faq.q4':'¿Puedo devolver un artículo?','faq.a4':'Escríbenos dentro del plazo legal de desistimiento y te ayudamos con la devolución.',
+'cart.h':'Carrito','cart.open':'Abrir carrito','cart.close':'Cerrar','cart.empty':'Tu carrito está vacío.','cart.total':'Total','cart.go':'Solicitar pedido','mail.s':'Pedido','mail.h':'Hola, quisiera hacer este pedido:',
+'ft.tag':'Ruanas tejidas a mano en Nobsa, Colombia, para Europa.','ft.contact':'Contacto','ft.help':'Servicio','ft.ship':'Envíos','ft.ret':'Devoluciones','ft.follow':'Síguenos','ft.rights':'Todos los derechos reservados.'}};
+/* ===== Lógica / Logic ===== */
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const loc={de:'de-DE',en:'en-GB',es:'es-ES'};
+let lang,cart={};try{cart=JSON.parse(store.get('cart'))||{}}catch(e){}
+const t=k=>T[lang][k]??T.en[k]??k;
+const fmt=n=>new Intl.NumberFormat(loc[lang],{style:'currency',currency:CONFIG.currency}).format(n);
+$('#grid').innerHTML=P.map(p=>`<article class="card rv"><figure class="ph" style="--c1:${p.a};--c2:${p.b}"><img src="assets/img/ruana-${p.id}.jpg" loading="lazy" width="800" height="1000" alt="" data-alt="p${p.id}.n" onerror="this.remove()">${p.fav?'<span class="tag" data-i18n="fav"></span>':''}</figure><div class="cb"><h3 data-i18n="p${p.id}.n"></h3><p class="sub" data-i18n="p${p.id}.s"></p><p data-i18n="p${p.id}.d"></p><div class="row"><b class="price" data-price="${p.id}"></b><button class="btn sm" data-add="${p.id}" data-i18n="add"></button></div></div></article>`).join('');
+$('#soc').innerHTML=Object.entries(CONFIG.social).map(([n,u])=>`<li><a href="${u}" target="_blank" rel="noopener noreferrer">${n}</a></li>`).join('');
+function setLang(l){
+ lang=T[l]?l:CONFIG.defaultLang;store.set('lang',lang);document.documentElement.lang=lang;
+ $$('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));
+ $$('[data-i18n-aria]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.i18nAria)));
+ $$('[data-alt]').forEach(e=>e.alt=t(e.dataset.alt));
+ $$('[data-price]').forEach(e=>e.textContent=fmt(CONFIG.prices[e.dataset.price]));
+ document.title=t('meta.title');$('meta[name=description]').content=t('meta.desc');
+ $('meta[property="og:title"]').content=t('meta.title');$('meta[property="og:description"]').content=t('meta.desc');
+ const m=$('#mail');m.textContent=CONFIG.email;m.href='mailto:'+CONFIG.email;
+ $('#lang').value=lang;renderCart();
+}
+function renderCart(){
+ const ids=Object.keys(cart).filter(i=>cart[i]>0),n=ids.reduce((s,i)=>s+cart[i],0);
+ $('#cnt').textContent=n;$('#cnt').hidden=!n;
+ $('#items').innerHTML=ids.length?ids.map(i=>`<li><div><b>${t('p'+i+'.n')}</b><br>${fmt(CONFIG.prices[i])}</div><div class="qty"><button data-q="${i}" data-d="-1" aria-label="−">−</button><span>${cart[i]}</span><button data-q="${i}" data-d="1" aria-label="+">+</button></div></li>`).join(''):`<li>${t('cart.empty')}</li>`;
+ $('#total').textContent=fmt(ids.reduce((s,i)=>s+cart[i]*CONFIG.prices[i],0));
+ $('#go').disabled=!n;store.set('cart',JSON.stringify(cart));
+}
+const toggleCart=o=>{document.body.classList.toggle('co',o);if(o)$('#cx').focus();else $('#cb').focus()};
+document.addEventListener('click',e=>{
+ const a=e.target.closest('[data-add]'),q=e.target.closest('[data-q]');
+ if(a){cart[a.dataset.add]=(cart[a.dataset.add]||0)+1;renderCart();toggleCart(true)}
+ if(q){cart[q.dataset.q]=Math.max(0,(cart[q.dataset.q]||0)+ +q.dataset.d);renderCart()}
+ if(e.target.closest('#nav a'))closeMenu();
+});
+function closeMenu(){$('#nav').classList.remove('open');$('#bg').setAttribute('aria-expanded','false')}
+$('#bg').onclick=()=>{const o=$('#nav').classList.toggle('open');$('#bg').setAttribute('aria-expanded',o)};
+$('#cb').onclick=()=>toggleCart(true);$('#cx').onclick=$('#ov').onclick=()=>toggleCart(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){toggleCart(false);closeMenu()}});
+$('#lang').onchange=e=>setLang(e.target.value);
+$('#go').onclick=()=>{
+ const ids=Object.keys(cart).filter(i=>cart[i]>0);if(!ids.length)return;
+ const body=t('mail.h')+'\n\n'+ids.map(i=>`${cart[i]} × ${t('p'+i+'.n')} – ${fmt(CONFIG.prices[i])}`).join('\n')+'\n\n'+t('cart.total')+': '+$('#total').textContent;
+ location.href='mailto:'+CONFIG.email+'?subject='+encodeURIComponent(t('mail.s')+' – Ruanas de Nobsa')+'&body='+encodeURIComponent(body);
+};
+const qp=new URLSearchParams(location.search).get('lang');
+setLang([qp,store.get('lang'),CONFIG.defaultLang].find(l=>T[l]));
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.12});$$('.rv').forEach(el=>io.observe(el))}else $$('.rv').forEach(el=>el.classList.add('in'));
+</script>
 </body>
 </html>
