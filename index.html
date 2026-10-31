@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi tienda</title>
+  <style>
+    <h1>🍽️ Ecommerce Comida Internacional - Harvey Sanabria</h1>
+
+    <p class="slogan">
+      Sabores del mundo a un clic de distancia 🌎
+    </p>
+
+    <div class="beneficios">
+      <span>🚚 Envíos en Bogotá</span>
+      <span>🔒 Compra segura</span>
+      <span>📦 Seguimiento de pedido</span>
+    </div>
+
+    <div id="productos"></div>
+
+    <div class="carrito">
+      <h2>🧾 Carrito de Compras</h2>
+
+      <ul id="lista-carrito"></ul>
+
+      <div class="resumen">
+        <p>
+          Envío: <strong>Gratis</strong>
+        </p>
+
+        <p class="total">
+          Total: $<span id="total">0</span>
+        </p>
+      </div>
+
+      <button class="vaciar" onclick="vaciarCarrito()">
+        🧼 Vaciar Carrito
+      </button>
+
+      <button class="finalizar" onclick="finalizarCompra()">
+        ✅ Finalizar Compra
+      </button>
+    </div>
+  </style>
+</head>
+<body>
+  <h1>🍽️ Ecommerce Comida Internacional - Harvey Sanabria</h1>
+
+  <p class="slogan">
+    Sabores del mundo a un clic de distancia 🌎
+  </p>
+
+  <div class="beneficios">
+    <span>🚚 Envíos en Bogotá</span>
+    <span>🔒 Compra segura</span>
+    <span>📦 Seguimiento de pedido</span>
+  </div>
+
+  <div id="productos"></div>
+
+  <div class="carrito">
+    <h2>🧾 Carrito de Compras</h2>
+
+    <ul id="lista-carrito"></ul>
+
+    <div class="resumen">
+      <p>
+        Envío: <strong>Gratis</strong>
+      </p>
+
+      <p class="total">
+        Total: $<span id="total">0</span>
+      </p>
+    </div>
+
+    <button class="vaciar" onclick="vaciarCarrito()">
+      🧼 Vaciar Carrito
+    </button>
+
+    <button class="finalizar" onclick="finalizarCompra()">
+      ✅ Finalizar Compra
+    </button>
+  </div>
+
+  <script>
+    const productos = [
+      {
+        id: 1,
+        nombre: "Ruana Rústica",
+        descripcion: "Prenda tradicional de Nobsa elaborada en 100% lana virgen de oveja sin cardar.",
+        precio: 180000,
+        imagen: "https://www.madeinnobsa.com/wp-content/uploads/2022/08/RuanaRusticaLineaColombia-1.webp"
+      },
+      {
+        id: 2,
+        nombre: "Ruana Doble Faz",
+        descripcion: "Tejido artesanal reversible de doble cara con tonalidades neutras combinables.",
+        precio: 240000,
+        imagen: "https://artesytelares.com/wp-content/uploads/2019/10/ruana-hombre-doble-faz-2.webp"
+      },
+      {
+        id: 3,
+        nombre: "Ruana Cuatro Puntas",
+        descripcion: "Silueta icónica de corte cerrado y caída clásica en puntas en los costados.",
+        precio: 150000,
+        imagen: "https://http2.mlstatic.com/D_NQ_NP_926155-MCO88891174847_072025-O.webp"
+      },
+      {
+        id: 4,
+        nombre: "Ruana con Capota",
+        descripcion: "Modelo funcional que incorpora capucha integrada para máxima protección contra el frío.",
+        precio: 165000,
+        imagen: "https://i.pinimg.com/736x/19/13/ed/1913ed884c837639bb657ca86b7f5d98.jpg"
+      },
+      {
+        id: 5,
+        nombre: "Ruana de Diseño Contemporáneo",
+        descripcion: "Prenda de corte moderno tipo capa con un llamativo patrón de franjas multicolor.",
+        precio: 195000,
+        imagen: "https://www.madeinnobsa.com/wp-content/uploads/2025/11/RuanaPonchoColorines1.webp"
+      }
+    ];
+
+
+    /* ==============================
+       CARRITO
+    ================================ */
+
+    const carrito = [];
+
+    const contenedorProductos = document.getElementById("productos");
+    const listaCarrito = document.getElementById("lista-carrito");
+    const totalCarrito = document.getElementById("total");
+
+
+    /* ==============================
+       MOSTRAR PRODUCTOS
+    ================================ */
+
+    function mostrarProductos() {
+
+      contenedorProductos.innerHTML = "";
+
+      productos.forEach(prod => {
+
+        const div = document.createElement("div");
+
+        div.className = "producto";
+
+        div.innerHTML = `
+          <img src="${prod.imagen}" alt="${prod.nombre}">
+
+          <h3>${prod.nombre}</h3>
+
+          <p class="descripcion">
+            ${prod.descripcion}
+          </p>
+
+          <p class="precio">
+            ${prod.precio.toLocaleString("es-CO", {
+              style: "currency",
+              currency: "COP",
+              minimumFractionDigits: 0
+            })}
+          </p>
+
+          <button onclick="agregarAlCarrito(${prod.id})">
+            Agregar al carrito
+          </button>
+        `;
+
+        contenedorProductos.appendChild(div);
+
+      });
+
+    }
+
+
+    /* ==============================
+       AGREGAR AL CARRITO
+    ================================ */
+
+    function agregarAlCarrito(id) {
+
+      const productoExistente =
+        carrito.find(p => p.id === id);
+
+      if (productoExistente) {
+
+        productoExistente.cantidad++;
+
+      } else {
+
+        const producto =
+          productos.find(p => p.id === id);
+
+        carrito.push({
+          ...producto,
+          cantidad: 1
+        });
+
+      }
+
+      actualizarCarrito();
+
+    }
+
+
+    /* ==============================
+       ACTUALIZAR CARRITO
+    ================================ */
+
+    function actualizarCarrito() {
+
+      listaCarrito.innerHTML = "";
+
+      let total = 0;
+      let totalItems = 0;
+
+      carrito.forEach(item => {
+
+        const li =
+          document.createElement("li");
+
+        const subtotal =
+          item.precio * item.cantidad;
+
+        li.textContent =
+          `${item.nombre} x${item.cantidad} — ` +
+          subtotal.toLocaleString("es-CO", {
+            style: "currency",
+            currency: "COP",
+            minimumFractionDigits: 0
+          });
+
+        listaCarrito.appendChild(li);
+
+        total += subtotal;
+        totalItems += item.cantidad;
+
+      });
+
+      totalCarrito.textContent =
+        total.toLocaleString("es-CO");
+
+      actualizarTituloCarrito(totalItems);
+
+    }
+
+
+    /* ==============================
+       CONTADOR DEL CARRITO
+    ================================ */
+
+    function actualizarTituloCarrito(cantidad) {
+
+      const titulo =
+        document.querySelector(".carrito h2");
+
+      titulo.textContent =
+        `🧾 Carrito de Compras (${cantidad})`;
+
+    }
+
+
+    /* ==============================
+       VACIAR CARRITO
+    ================================ */
+
+    function vaciarCarrito() {
+
+      if (carrito.length === 0) {
+
+        alert("🛒 El carrito ya está vacío.");
+
+        return;
+
+      }
+
+      if (
+        confirm(
+          "¿Estás seguro de que quieres vaciar el carrito?"
+        )
+      ) {
+
+        carrito.length = 0;
+
+        actualizarCarrito();
+
+      }
+
+    }
+
+
+    /* ==============================
+       FINALIZAR COMPRA
+    ================================ */
+
+    function finalizarCompra() {
+
+      if (carrito.length === 0) {
+
+        alert(
+          "🛒 Tu carrito está vacío. Agrega productos antes de finalizar la compra."
+        );
+
+        return;
+
+      }
+
+      alert(
+        "🎉 ¡Pedido simulado confirmado!\n\n" +
+        "En un eCommerce real, ahora entrarían en acción " +
+        "el backend, la pasarela de pago y la logística."
+      );
+
+      carrito.length = 0;
+
+      actualizarCarrito();
+
+    }
+
+
+    /* ==============================
+       INICIAR TIENDA
+    ================================ */
+
+    mostrarProductos();
+  </script>
+</body>
+</html>
